@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Probabilistic Safety
+    under Arbitrary
+    Disturbance
+    Distributions
+    using Piecewise-Affine
+    Control Barrier Functions
+  </title>
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Load Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      // Enable class-based dark mode
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <script>
+      (function () {
+        // Check for saved theme in localStorage
+        const savedTheme = localStorage.getItem('theme');
+        // Check for system preference
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+  </script>
+  <style>
+    /* Basic body styling */
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Style for the paper abstract */
+    #abstract {
+      line-height: 1.6;
+    }
+
+    #abstract::before {
+      content: "Abstract \2022";
+      font-weight: bold;
+      text-justify: inter-word;
+    }
+
+    /* Hide one icon based on theme */
+    .dark #sun-icon {
+      display: inline-block;
+    }
+
+    .dark #moon-icon {
+      display: none;
+    }
+
+    #sun-icon {
+      display: none;
+    }
+
+    #moon-icon {
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 antialiased transition-colors duration-300">
+
+  <!-- Main Content Container -->
+  <div class="container mx-auto max-w-4xl p-6 md:p-12">
+
+    <!-- Paper Title -->
+    <header class="mb-8 relative">
+      <button id="theme-toggle"
+        class="absolute top-0 right-0 p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+        <!-- Moon Icon (from lucide) -->
+        <i data-lucide="moon" id="moon-icon" class="h-6 w-6"></i>
+        <!-- Sun Icon (from lucide) -->
+        <i data-lucide="sun" id="sun-icon" class="h-6 w-6"></i>
+      </button>
+
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 pr-12">
+        Probabilistic Safety
+        under Arbitrary
+        Disturbance
+        Distributions
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        using Piecewise-Affine
+        Control Barrier Functions
+      </p>
+    </header>
+
+    <!-- Author List -->
+    <section class="mb-8">
+      <!-- <h2 class="text-2xl font-semibold text-gray-900 mb-4 border-b pb-2">Authors</h2> -->
+      <div class="flex flex-wrap gap-x-6 gap-y-2">
+        <!-- Repeat this block for each author -->
+        <div class="text-lg">
+          <span class="font-medium">Matisse Teuwen</span>
+        </div>
+        <div class="text-lg">
+          <span class="font-medium">Mathijs Schuurmans</span>
+        </div>
+        <div class="text-lg">
+          <span class="font-medium">Panagiotis Patrinos</span>
+        </div>
+        <!-- ... -->
+      </div>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+        KU Leuven, Department of Electrical Engineering
+      </p>
+    </section>
+
+    <!-- Links Section -->
+    <!-- <section class="mb-8 bg-white p-6 rounded-lg shadow-sm border border-gray-200"> -->
+    <!-- <h2 class="text-2xl font-semibold text-gray-900 mb-4">Links</h2> -->
+    <div class="flex flex-wrap gap-4">
+    </div>
+    <div class="flex flex-wrap gap-4">
+      <a href="[LINK_TO_PAPER_PDF.pdf]"
+        class="inline-flex items-center gap-2 bg-blue-600 text-white font-medium py-2 px-5 rounded-lg hover:bg-blue-700 transition duration-300 shadow-sm">
+        <i data-lucide="book-open" class="h-4 w-4"></i>
+        Paper
+      </a>
+      <a href="[LINK_TO_CODE_REPO]"
+        class="inline-flex items-center gap-2 bg-gray-700 text-white font-medium py-2 px-5 rounded-lg hover:bg-gray-800 transition duration-300 shadow-sm">
+        <i data-lucide="github" class="h-4 w-4"></i>
+        Code
+      </a>
+      <a href="#citation"
+        class="inline-flex items-center gap-2 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-100 font-medium py-2 px-5 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500 transition duration-300">
+        <i data-lucide="quote" class="h-4 w-4"></i>
+        Citation
+      </a>
+    </div>
+    <!-- </section> -->
+
+    <!-- Abstract -->
+    <section class="mt-8 mb-8">
+      <!-- <h3 class="text-2xl font-semibold text-gray-900 mb-4 border-b pb-2">Abstract</h2> -->
+      <p id="abstract"
+        class="text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+        We propose a simple safety filter design for stochastic discrete-time systems
+        based on piecewise affine probabilistic control barrier functions,
+        providing an appealing balance between modeling flexibility and
+        computational complexity.
+        Exact evaluation of the safety filter consists of solving a
+        mixed-integer quadratic program (MIQP) if the dynamics are control-affine,
+        (or a mixed-integer nonlinear program in general).
+        We propose a heuristic search method that replaces this by a
+        small number of small-scale quadratic programs (QPs), or nonlinear programs (NLPs)
+        respectively.
+        The proposed approach provides a flexible framework in which arbitrary (data-driven)
+        quantile estimators can be used to bound the probability of safety violations.
+        Through extensive numerical experiments,
+        we demonstrate improvements in conservatism and
+        computational cost with respect to existing methods,
+        and we illustrate the flexibility of the method for modeling complex
+        safety sets.
+      </p>
+    </section>
+
+    <!-- Key Figure / Teaser Image -->
+    <section class="mb-8">
+      <!-- <h2 class="text-2xl font-semibold text-gray-900 mb-4 border-b pb-2">Overview</h2> -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+        <img src="https://placehold.co/800x400/e2e8f0/94a3b8?text=Key+Figure+or+Teaser+Image"
+          alt="Placeholder for key figure" class="w-full h-auto rounded-md border border-gray-300">
+        <p class="text-gray-600 dark:text-gray-400 italic text-center mt-4">
+          Coming soon.
+        </p>
+      </div>
+    </section>
+
+    <!-- Citation -->
+    <section id="citation" class="mb-8">
+      <h2
+        class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-300 dark:border-gray-700 pb-2">
+        Citation (BibTeX)</h2>
+      <pre
+        class="bg-gray-900 dark:bg-gray-950 text-gray-200 dark:text-gray-300 p-6 rounded-lg shadow-sm overflow-x-auto text-sm">
+        @inproceedings{[your-citation-key],
+        author = {[Author One] and [Author Two] and [Author Three]},
+        title = {[Your Paper Title Here]},
+        booktitle = {[Conference or Journal Name]},
+        year = {[YYYY]}
+        }
+      </pre>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center p-6 text-gray-500 dark:text-gray-400 text-sm">
+
+  </footer>
+
+
+  <!-- Toggle Button Click-handling Script -->
+  <script>
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>
