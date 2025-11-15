@@ -76,6 +76,12 @@
     #moon-icon {
       display: inline-block;
     }
+
+
+    #copy-success-msg {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
   </style>
 </head>
 
@@ -133,12 +139,12 @@
     <div class="flex flex-wrap gap-4">
     </div>
     <div class="flex flex-wrap gap-4">
-      <a href="[LINK_TO_PAPER_PDF.pdf]"
+      <a href=""
         class="inline-flex items-center gap-2 bg-blue-600 text-white font-medium py-2 px-5 rounded-lg hover:bg-blue-700 transition duration-300 shadow-sm">
         <i data-lucide="book-open" class="h-4 w-4"></i>
         Paper
       </a>
-      <a href="[LINK_TO_CODE_REPO]"
+      <a href=""
         class="inline-flex items-center gap-2 bg-gray-700 text-white font-medium py-2 px-5 rounded-lg hover:bg-gray-800 transition duration-300 shadow-sm">
         <i data-lucide="github" class="h-4 w-4"></i>
         Code
@@ -176,15 +182,89 @@
       </p>
     </section>
 
-    <!-- Key Figure / Teaser Image -->
+    <!-- Gallery Section -->
     <section class="mb-8">
-      <!-- <h2 class="text-2xl font-semibold text-gray-900 mb-4 border-b pb-2">Overview</h2> -->
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-        <img src="https://placehold.co/800x400/e2e8f0/94a3b8?text=Key+Figure+or+Teaser+Image"
-          alt="Placeholder for key figure" class="w-full h-auto rounded-md border border-gray-300">
-        <p class="text-gray-600 dark:text-gray-400 italic text-center mt-4">
-          Coming soon.
-        </p>
+      <h2
+        class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-300 dark:border-gray-700 pb-2">
+        Illustrative examples</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <!-- NOTE: Replace this placeholder with your actual image path -->
+          <p class="text-gray-600 dark:text-gray-400 italic text-center p-2 text-sm">
+            Realizations of the state trajectories
+          </p>
+        </div>
+
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <!-- NOTE: Replace this placeholder with your actual image path -->
+          <p class="text-gray-600 dark:text-gray-400 italic text-center p-2 text-sm">
+            Selected halfspaces per time step (single realization)
+          </p>
+        </div>
+
+        <!-- Image 1 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <!-- NOTE: Replace this placeholder with your actual image path -->
+          <img src="assets/corridor_maxhb.gif" alt="corridor1.gif" class="w-full h-auto object-cover">
+          <!-- <p class="text-gray-600 dark:text-gray-400 italic text-center p-2 text-sm"> -->
+          <!--     Corridor1 -->
+          <!-- </p> -->
+        </div>
+
+        <!-- Image 2 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <!-- NOTE: Replace this placeholder with your actual image path -->
+          <img src="assets/corridor_maxhb_poly.gif" alt="corridor_maxh.gif" class="w-full h-auto object-cover">
+          <!-- <p class="text-gray-600 dark:text-gray-400 italic text-center p-2 text-sm"> -->
+          <!--     Corridor 1 -->
+          <!-- </p> -->
+        </div>
+
+        <!-- Image 3 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <!-- NOTE: Replace this placeholder with your actual image path -->
+          <img src="assets/stresstest.gif" alt="corridor1.gif" class="w-full h-auto object-cover">
+          <!-- <p class="text-gray-600 dark:text-gray-400 italic text-center p-2 text-sm"> -->
+          <!--     Corridor1 -->
+          <!-- </p> -->
+        </div>
+
+        <!-- Image 2 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <!-- NOTE: Replace this placeholder with your actual image path -->
+          <img src="assets/stresstest_poly.gif" alt="stresstest" class="w-full h-auto object-cover">
+          <!-- <p class="text-gray-600 dark:text-gray-400 italic text-center p-2 text-sm"> -->
+          <!--     Corridor 1 -->
+          <!-- </p> -->
+        </div>
+        <!-- Image 5 -->
+        <!-- Image 3 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <!-- NOTE: Replace this placeholder with your actual image path -->
+          <img src="assets/n-gon.gif" alt="n-gon.gif" class="w-full h-auto object-cover">
+          <!-- <p class="text-gray-600 dark:text-gray-400 italic text-center p-2 text-sm"> -->
+          <!--     Corridor1 -->
+          <!-- </p> -->
+        </div>
+
+        <!-- Image 2 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <!-- NOTE: Replace this placeholder with your actual image path -->
+          <img src="assets/n-gon_poly.gif" alt="stresstest" class="w-full h-auto object-cover">
+          <!-- <p class="text-gray-600 dark:text-gray-400 italic text-center p-2 text-sm"> -->
+          <!--     Corridor 1 -->
+          <!-- </p> -->
+        </div>
+
       </div>
     </section>
 
@@ -193,40 +273,66 @@
       <h2
         class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 border-b border-gray-300 dark:border-gray-700 pb-2">
         Citation (BibTeX)</h2>
-      <pre
-        class="bg-gray-900 dark:bg-gray-950 text-gray-200 dark:text-gray-300 p-6 rounded-lg shadow-sm overflow-x-auto text-sm">
-        @inproceedings{[your-citation-key],
-        author = {[Author One] and [Author Two] and [Author Three]},
-        title = {[Your Paper Title Here]},
-        booktitle = {[Conference or Journal Name]},
-        year = {[YYYY]}
-        }
-      </pre>
+      <div class="relative">
+        <button id="copy-bibtex-btn"
+          class="absolute top-2 right-2 p-2 rounded-lg bg-gray-700 text-gray-200 hover:bg-gray-600 transition-colors"
+          title="Copy to clipboard">
+          <i data-lucide="clipboard" class="h-5 w-5"></i>
+        </button>
+        <pre id="bibtex-content"
+          class="bg-gray-900 dark:bg-gray-950 text-gray-200 dark:text-gray-300 p-6 pt-10 rounded-lg shadow-sm overflow-x-auto text-sm">
+          Coming soon...
+        </pre>
+      </div>
+      <div id="copy-success-msg" class="text-green-200 text-sm mt-2 h-4" style="visibility:'none'">Copied to
+        clipboard
+      </div>
     </section>
-  </div>
 
-  <!-- Footer -->
-  <footer class="text-center p-6 text-gray-500 dark:text-gray-400 text-sm">
-
-  </footer>
+    <!-- Footer -->
+    <footer class="text-center p-6 text-gray-500 dark:text-gray-400 text-sm">
+    </footer>
 
 
-  <!-- Toggle Button Click-handling Script -->
-  <script>
-    document.getElementById('theme-toggle').addEventListener('click', function () {
-      const html = document.documentElement;
-      if (html.classList.contains('dark')) {
-        html.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      } else {
-        html.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      }
-    });
+    <!-- Toggle Button Click-handling Script -->
+    <script>
+      document.getElementById('theme-toggle').addEventListener('click', function () {
+        const html = document.documentElement;
+        if (html.classList.contains('dark')) {
+          html.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          html.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
 
-    // Initialize Lucide Icons
-    lucide.createIcons();
-  </script>
+      // Copy BibTeX
+      document.getElementById('copy-bibtex-btn').addEventListener('click', function () {
+        const textToCopy = document.getElementById('bibtex-content').innerText;
+
+        // Use a temporary textarea to copy text
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          document.execCommand('copy');
+          const msgEl = document.getElementById('copy-success-msg');
+          msgEl.style.opacity = 1;
+          setTimeout(() => {msgEl.style.opacity = 0;}, 2000);
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+        }
+
+        document.body.removeChild(textarea);
+      });
+
+
+      // Initialize Lucide Icons
+      lucide.createIcons();
+    </script>
 </body>
 
 </html>
